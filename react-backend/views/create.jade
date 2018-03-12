@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 Create Your League
+    form(method='POST', action='/register')
+        #form-group
+            label League Name:
+            input.form-control(name='name', type='text')
+        #form-group
+            label Sport:
+            input.form-control(name='sport', type='text')
+        #form-group
+            label Start:
+            input.form-control(name='start', type='date')
+        #form-group
+            label End:
+            input.form-control(name='end', type='date')
+        #form-group
+            label Location:
+            input.form-control(name='end', type='date')
+        br
+        input.btn.btn-primary(type='submit',value='Submit')
