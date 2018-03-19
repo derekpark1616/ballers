@@ -17,7 +17,6 @@ router.post('/', function(req, res, next) {
     const password = req.body.password;
     const password2 = req.body.password2;
 
-    //add validation for fields later
     req.checkBody('name', 'Name is required').notEmpty();
     req.checkBody('email', 'Email is required').notEmpty();
     req.checkBody('email', 'Please enter a valid email').isEmail();

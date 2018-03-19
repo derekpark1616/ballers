@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    h1 Edit Your League
+    form(method='POST', action='/leagues/edit/'+league._id)
+        #form-group
+            label League Name:
+            input.form-control(name='name', type='text', value=league.name)
+        #form-group
+            label Sport:
+            input.form-control(name='sport', type='text', value=league.sport)
+        #form-group
+            label Start:
+            input.form-control(name='start', type='date', value=league.start)
+        #form-group
+            label End:
+            input.form-control(name='end', type='date', value=league.end)
+        #form-group
+            label Location:
+            input.form-control(name='location', type='text', value=league.location)
+        br
+        input.btn.btn-primary(type='submit',value='Submit')
+        a.btn.btn-danger(href='/leagues') Cancel

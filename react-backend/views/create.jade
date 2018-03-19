@@ -2,7 +2,7 @@ extends layout
 
 block content
     h1 Create Your League
-    form(method='POST', action='/register')
+    form(method='POST', action='/leagues/create')
         #form-group
             label League Name:
             input.form-control(name='name', type='text')
@@ -17,6 +17,6 @@ block content
             input.form-control(name='end', type='date')
         #form-group
             label Location:
-            input.form-control(name='end', type='date')
+            input.form-control(name='location', type='text')
         br
         input.btn.btn-primary(type='submit',value='Submit')

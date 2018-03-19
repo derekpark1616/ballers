@@ -16,7 +16,8 @@ var index = require('./routes/index');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var logout = require('./routes/logout');
-var create = require('./routes/create');
+//var create = require('./routes/create');
+var leagues = require('./routes/leagues');
 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -84,7 +85,8 @@ app.use('/', index);
 app.use('/register', register);
 app.use('/login', login);
 app.use('/logout', logout);
-app.use('/create', create);
+//app.use('/create', create);
+app.use('/leagues', leagues);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

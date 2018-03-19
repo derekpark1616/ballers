@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= league.name
+  h5 Created by #{creator}
+  p= league.sport
+  hr
+  if user
+    if user.id ==league.creator
+      a.btn.btn-default(href='/leagues/edit/'+league._id) Edit 
+      a.btn.btn-danger.delete-league(href='#',data-id=league._id) Delete
