@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 //League Schema
-const UserSchema = mongoose.Schema({
+const LeagueSchema = mongoose.Schema({
     name:{
         type: String,
         required:true
@@ -25,7 +25,9 @@ const UserSchema = mongoose.Schema({
     creator:{
         type: String,
         required: true
-    }
+    },
+    participants: [String]
+
 });
 
-const League = module.exports = mongoose.model('League', UserSchema);
+const League = module.exports = mongoose.model('League', LeagueSchema);

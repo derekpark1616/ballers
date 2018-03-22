@@ -1,9 +1,19 @@
 extends layout
 
 block content
-  h1= league.name
-  h5 Created by #{creator}
-  p= league.sport
+  h2= league.name
+  h5= league.sport 
+    |   League
+  p Created by #{creator.name}
+    //if joined 
+    if user
+      if league.participants.includes(user.id)
+        form(method='POST', action='/leagues/leave/'+league._id)
+          input.btn.btn-primary#join(type='submit',value='Leave League')
+      else
+        form(method='POST', action='/leagues/join/'+league._id)
+          input.btn.btn-primary#join(type='submit',value='Join League')
+      
   hr
   if user
     if user.id ==league.creator

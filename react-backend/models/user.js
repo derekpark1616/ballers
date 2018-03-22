@@ -18,7 +18,8 @@ const UserSchema = mongoose.Schema({
     password:{
         type: String,
         required:true
-    }
+    },
+    inLeagues: [String]
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
