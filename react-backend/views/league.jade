@@ -9,10 +9,10 @@ block content
     if user
       if league.participants.includes(user.id)
         form(method='POST', action='/leagues/leave/'+league._id)
-          input.btn.btn-primary#join(type='submit',value='Leave League')
+          input.btn.btn-danger#floatright(type='submit',value='Leave League')
       else
         form(method='POST', action='/leagues/join/'+league._id)
-          input.btn.btn-primary#join(type='submit',value='Join League')
+          input.btn.btn-primary#floatright(type='submit',value='Join League')
       
   hr
   if user

@@ -26,7 +26,11 @@ const LeagueSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    participants: [String]
+    participants: [String],
+    public:{
+        type: Boolean,
+        required: true
+    }
 
 });
 

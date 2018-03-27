@@ -7,7 +7,7 @@ let User = require('../models/user');
 
 /* GET list of leagues page. */
 router.get('/', function(req, res, next) {
-    League.find({}, function(err, leagues) {
+    League.find({"public": true}, function(err, leagues) {
         if(err) {
             console.log(err);
         } else {
@@ -43,6 +43,7 @@ router.post('/create', function(req, res, next) {
     const start = req.body.start;
     const end = req.body.end;
     const location = req.body.location;
+    const public = req.body.public;
 
     //required validations
     req.checkBody('name', 'Please name your league').notEmpty();
@@ -63,7 +64,8 @@ router.post('/create', function(req, res, next) {
             end: end,
             location: location,
             creator: req.user._id,
-            participants: [req.user._id]
+            participants: [req.user._id],
+            public: (public ? true : false)
         });
 
         newLeague.save(function(err) {
@@ -108,6 +110,7 @@ router.post('/edit/:id', function(req, res){
     league.start = req.body.start;
     league.end = req.body.end;
     league.location = req.body.location;
+    league.public = (req.body.public ? true : false)
   
     let query = {_id:req.params.id}
   
@@ -128,14 +131,23 @@ router.delete('/:id', function(req, res){
         console.log("not logged in");
         res.status(500).send();
     }
-  
     let query = {_id:req.params.id}
-  
+    //find the league from db using id
     League.findById(req.params.id, function(err, league){
         if(league.creator != req.user._id){
-            console.log("not creator");
-            res.status(500).send();
+            req.flash('error', 'You are not the creator of this league');
+            res.redirect('/leagues');
         } else {
+            const index = req.user.inLeagues.indexOf(league._id);
+            if(index != -1) {
+                req.user.inLeagues.splice(index, 1);
+                req.user.save(function(err) {
+                    if(err) {
+                        console.log(err);
+                        return;
+                    }
+                });
+            }              
             League.remove(query, function(err){
                 if(err){
                     console.log(err);

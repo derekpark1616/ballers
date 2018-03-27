@@ -19,7 +19,8 @@ const UserSchema = mongoose.Schema({
         type: String,
         required:true
     },
-    inLeagues: [String]
+    inLeagues: [String],
+    friends: [String]
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);

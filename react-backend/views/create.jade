@@ -18,5 +18,8 @@ block content
         #form-group
             label Location:
             input.form-control(name='location', type='text')
+        #form-group
+            label Public: (Unchecking this box will make this league "invite-only")
+            input.form-control(name='public', type='checkbox', value='true')
         br
         input.btn.btn-primary(type='submit',value='Submit')

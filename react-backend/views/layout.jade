@@ -20,17 +20,17 @@ html
                 | Create League
           li.nav-item.active
             a.nav-link(href='/leagues')
-              | Leagues
+              | Public Leagues
               span.sr-only (current)
           li.nav-item.dropdown
-            a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-              | Leagues
-            .dropdown-menu(aria-labelledby='navbarDropdown')
-              if user
-                a.dropdown-item(href='/leagues/create') Create
-              a.dropdown-item(href='#') Another action
-              .dropdown-divider
-              a.dropdown-item(href='#') Something else here
+            if user
+              a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                | Your
+              .dropdown-menu(aria-labelledby='navbarDropdown')
+                a.dropdown-item(href='#') Profile
+                a.dropdown-item(href='/your/leagues') Leagues
+                .dropdown-divider
+                a.dropdown-item(href='#') Friends
         ul.navbar-nav.navbar-right
           if user
             li.nav-item
