@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env PORT=3001 node ./bin/www"
+    "start": "cross-env PORT=3000 node ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
